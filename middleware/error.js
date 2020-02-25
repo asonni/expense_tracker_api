@@ -17,10 +17,13 @@ const handleValidationErrorDB = err => {
 };
 
 const sendErrorDev = (err, res) => {
+  const msg = Object.values(err.errors)
+    .map(el => el.message)
+    .join();
   res.status(err.statusCode).json({
     success: false,
     error: err,
-    message: err.message,
+    message: msg,
     stack: err.stack
   });
 };
