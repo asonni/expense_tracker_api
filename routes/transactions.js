@@ -9,7 +9,7 @@ const advancedResults = require('../middleware/advancedResults');
 router
   .route('/')
   .get(advancedResults(Transaction), transactionController.getTransactions)
-  .post(transactionController.createTransaction);
+  .post(transactionController.addTransaction);
 
 router.route('/:id').delete(transactionController.deleteTransaction);
 

@@ -12,7 +12,7 @@ exports.getTransactions = asyncHandler(async (req, res, next) => {
 // @desc      Create new transaction
 // @route     POST /api/v1/transactions
 // @access    Public
-exports.createTransaction = asyncHandler(async (req, res, next) => {
+exports.addTransaction = asyncHandler(async (req, res, next) => {
   const transaction = await Transaction.create(req.body);
 
   return res.status(201).json({
@@ -36,7 +36,7 @@ exports.deleteTransaction = asyncHandler(async (req, res, next) => {
     );
   }
 
-  transaction.remove();
+  await transaction.remove();
 
   return res.status(200).json({
     success: true,
